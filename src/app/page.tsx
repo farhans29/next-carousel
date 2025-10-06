@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const openModal = (product: any) => {
+  const openModal = (product: Product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
@@ -19,7 +19,27 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-  const carouselItems = [
+  interface CarouselItem {
+    id: number;
+    title: string;
+    subtitle: string;
+    image: string;
+    cta: string;
+  }
+
+  interface Product {
+    id: number;
+    name: string;
+    price: string;
+    originalPrice: string;
+    image: string;
+    rating: number;
+    reviews: number;
+    description?: string;
+    category?: string;
+  }
+
+  const carouselItems: CarouselItem[] = [
     {
       id: 1,
       title: "Summer Collection 2025",
@@ -43,7 +63,7 @@ export default function Home() {
     },
   ];
 
-  const products = [
+  const products: Product[] = [
     {
       id: 1,
       name: "Premium Headphones",
@@ -105,7 +125,7 @@ export default function Home() {
       setCurrentSlide((prev: number) => (prev + 1) % carouselItems.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselItems.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prev: number) => (prev + 1) % carouselItems.length);
@@ -125,7 +145,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <Link href="/">
+                {/* <Link href="/">
                   <Image
                     src="/next.svg"
                     alt="ShopLogo"
@@ -133,7 +153,7 @@ export default function Home() {
                     height={30}
                     className="h-8 w-auto"
                   />
-                </Link>
+                </Link> */}
               </div>
               <div className="hidden md:block ml-10">
                 <div className="flex items-baseline space-x-4">
@@ -149,24 +169,7 @@ export default function Home() {
                   >
                     Products
                   </Link>
-                  <Link
-                    href="/products"
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Products
-                  </Link>
-                  <Link
-                    href="*"
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Categories
-                  </Link>
-                  <Link
-                    href="*"
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Deals
-                  </Link>
+
                   <Link
                     href="/about"
                     className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
@@ -504,9 +507,27 @@ export default function Home() {
               © 2025 ShopName. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <img src="/file.svg" alt="Visa" className="h-8 w-auto" />
-              <img src="/window.svg" alt="Mastercard" className="h-8 w-auto" />
-              <img src="/globe.svg" alt="PayPal" className="h-8 w-auto" />
+              <Image
+                src="/file.svg"
+                alt="Visa"
+                width={32}
+                height={12}
+                className="h-8 w-auto"
+              />
+              <Image
+                src="/window.svg"
+                alt="Mastercard"
+                width={32}
+                height={12}
+                className="h-8 w-auto"
+              />
+              <Image
+                src="/globe.svg"
+                alt="PayPal"
+                width={32}
+                height={12}
+                className="h-8 w-auto"
+              />
             </div>
           </div>
         </div>
@@ -619,8 +640,8 @@ export default function Home() {
                     {selectedProduct.name.toLowerCase()}. This exceptional
                     product combines innovative design with superior
                     functionality, offering you the perfect balance of style and
-                    performance. Crafted with precision and built to last, it's
-                    your ideal companion for everyday use.
+                    performance. Crafted with precision and built to last,
+                    it&apos;s your ideal companion for everyday use.
                   </p>
                 </div>
 

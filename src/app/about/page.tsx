@@ -9,17 +9,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <Link href="/">
-                  <Image
-                    src="/next.svg"
-                    alt="ShopLogo"
-                    width={120}
-                    height={30}
-                    className="h-8 w-auto"
-                  />
-                </Link>
-              </div>
+              <div className="flex-shrink-0"></div>
               <div className="hidden md:block ml-10">
                 <div className="flex items-baseline space-x-4">
                   <Link
@@ -34,18 +24,7 @@ export default function About() {
                   >
                     Products
                   </Link>
-                  <Link
-                    href="*"
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Categories
-                  </Link>
-                  <Link
-                    href="*"
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Deals
-                  </Link>
+
                   <Link
                     href="/about"
                     className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
@@ -146,8 +125,8 @@ export default function About() {
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
               Today, we continue to innovate and expand our product offerings,
-              always keeping our customers' needs at the heart of everything we
-              do.
+              always keeping our customers&apos; needs at the heart of
+              everything we do.
             </p>
           </div>
           <div className="bg-gray-100 rounded-lg p-8">
@@ -485,9 +464,27 @@ export default function About() {
               © 2025 ShopName. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <img src="/file.svg" alt="Visa" className="h-8 w-auto" />
-              <img src="/window.svg" alt="Mastercard" className="h-8 w-auto" />
-              <img src="/globe.svg" alt="PayPal" className="h-8 w-auto" />
+              <Image
+                src="/file.svg"
+                alt="Visa"
+                width={32}
+                height={12}
+                className="h-8 w-auto"
+              />
+              <Image
+                src="/window.svg"
+                alt="Mastercard"
+                width={32}
+                height={12}
+                className="h-8 w-auto"
+              />
+              <Image
+                src="/globe.svg"
+                alt="PayPal"
+                width={32}
+                height={12}
+                className="h-8 w-auto"
+              />
             </div>
           </div>
         </div>
